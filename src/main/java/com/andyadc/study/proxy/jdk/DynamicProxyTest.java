@@ -9,6 +9,8 @@ import java.lang.reflect.Proxy;
 import java.util.Properties;
 
 /**
+ * jdk proxy
+ *
  * @author andaicheng
  */
 public class DynamicProxyTest {
