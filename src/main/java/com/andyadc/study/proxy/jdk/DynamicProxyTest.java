@@ -1,4 +1,4 @@
-package com.andyadc.study.proxy;
+package com.andyadc.study.proxy.jdk;
 
 import java.io.File;
 import java.io.FileOutputStream;

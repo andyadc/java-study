@@ -1,4 +1,4 @@
-package com.andyadc.study.proxy;
+package com.andyadc.study.proxy.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -18,8 +18,8 @@ public class ProxyTest extends Proxy {
 
     static {
         try {
-            playMethod = Class.forName("com.andyadc.study.proxy.Dynamic").getMethod("play", new Class[0]);
-            eatMethod = Class.forName("com.andyadc.study.proxy.Dynamic").getMethod("eat", new Class[]{Class.forName("java.lang.String")});
+            playMethod = Class.forName("com.andyadc.study.proxy.jdk.Dynamic").getMethod("play", new Class[0]);
+            eatMethod = Class.forName("com.andyadc.study.proxy.jdk.Dynamic").getMethod("eat", new Class[]{Class.forName("java.lang.String")});
         } catch (Exception e) {
             e.printStackTrace();
         }
