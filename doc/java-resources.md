@@ -13,3 +13,7 @@
     
 * **IDE**
     * [IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
+    
+* **Blog**
+    * [江南白衣](http://calvin1978.blogcn.com)
+    * [张开涛](http://jinnianshilongnian.iteye.com)
