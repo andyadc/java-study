@@ -28,6 +28,9 @@ public class HttpUtil {
         DEFAULT_HEADER.put("Accept", "text/xml,text/javascript,text/html");
     }
 
+    private HttpUtil() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Build http query string.
@@ -192,7 +195,6 @@ public class HttpUtil {
 
     private static String getResponseCharset(String ctype) {
         String charset = DEFAULT_CHARSET;
-
         if (!isBlank(ctype)) {
             String[] params = ctype.split(";");
             for (String param : params) {
@@ -226,10 +228,6 @@ public class HttpUtil {
                 stream.close();
             }
         }
-    }
-
-    private HttpUtil() {
-        throw new UnsupportedOperationException();
     }
 
     public static boolean isBlank(String str) {
