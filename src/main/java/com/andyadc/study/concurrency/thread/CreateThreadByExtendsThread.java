@@ -13,6 +13,8 @@ public class CreateThreadByExtendsThread extends Thread {
 
     public static void main(String[] args) {
         System.out.println(Thread.currentThread().getName() + " main");
-        new CreateThreadByExtendsThread().start();
+        Thread thread = new CreateThreadByExtendsThread();
+        thread.start();
+        thread.start();
     }
 }
