@@ -13,26 +13,12 @@ public class StaticSyncTest {
 
     public static void main(String[] args) throws InterruptedException {
         StaticSync sync = new StaticSync();
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    sync.syncM1();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+        Thread thread1 = new Thread(() -> {
+            sync.syncM1();
         });
 
-        Thread thread2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    sync.staticSyncM1();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+        Thread thread2 = new Thread(() -> {
+            sync.staticSyncM1();
         });
 
         thread1.start();
@@ -47,33 +33,57 @@ public class StaticSyncTest {
 
 class StaticSync {
 
-    public synchronized void syncM1() throws InterruptedException {
+    public synchronized void syncM1() {
         System.out.println("syncM1");
-        Thread.sleep(5000);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public synchronized void syncM2() throws InterruptedException {
+    public synchronized void syncM2() {
         System.out.println("syncM2");
-        Thread.sleep(5000);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static synchronized void staticSyncM1() throws InterruptedException {
+    public static synchronized void staticSyncM1() {
         System.out.println("staticSyncM1");
-        Thread.sleep(5000);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static synchronized void staticSyncM2() throws InterruptedException {
+    public static synchronized void staticSyncM2() {
         System.out.println("staticSyncM2");
-        Thread.sleep(5000);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void noSyncM1() throws InterruptedException {
+    public void noSyncM1() {
         System.out.println("noSyncM1");
-        Thread.sleep(5000);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void noSyncM2() throws InterruptedException {
+    public void noSyncM2() {
         System.out.println("noSyncM2");
-        Thread.sleep(5000);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
