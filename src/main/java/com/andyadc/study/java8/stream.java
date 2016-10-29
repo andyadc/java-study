@@ -15,19 +15,17 @@ import java.util.stream.Collectors;
  */
 public class stream {
 
-    private static final Logger log = LoggerFactory.getLogger(stream.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(stream.class);
 
     public static void main(String[] args) {
-
         List<Integer> nums = new ArrayList<>(Arrays.asList(1, 3, 4, 5, 6, 8, 9));
         getList(nums);
         getListByStream(nums);
-
     }
 
     public static void getListByStream(List<Integer> nums){
         List<Integer> evens = nums.stream().filter(num -> num % 2 == 0).collect(Collectors.toList());
-        log.info("{}", evens);
+        LOGGER.info("{}", evens);
     }
 
     private static void getList(List<Integer> nums) {
@@ -37,7 +35,7 @@ public class stream {
                 evens.add(num);
             }
         }
-        log.info("{}", evens);
+        LOGGER.info("{}", evens);
     }
 
 }
