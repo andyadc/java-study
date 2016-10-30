@@ -22,10 +22,8 @@ public class StaticSyncTest {
         });
 
         thread1.start();
-        //thread1.join();
-
         thread2.start();
-        //thread2.join();
+
         System.out.println("main");
     }
 }
