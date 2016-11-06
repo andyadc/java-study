@@ -14,11 +14,11 @@ public class StaticSyncTest {
     public static void main(String[] args) throws InterruptedException {
         StaticSync sync = new StaticSync();
         Thread thread1 = new Thread(() -> {
-            sync.syncM1();
+            sync.staticSyncM1();
         });
 
         Thread thread2 = new Thread(() -> {
-            sync.staticSyncM1();
+            sync.syncM2();
         });
 
         thread1.start();
