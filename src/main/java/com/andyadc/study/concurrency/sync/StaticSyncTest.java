@@ -28,7 +28,6 @@ public class StaticSyncTest {
     }
 }
 
-
 class StaticSync {
 
     public synchronized void syncM1() {
