@@ -21,7 +21,7 @@
         <cglib.version>3.2.4</cglib.version>
         <fastjson.version>1.2.21</fastjson.version>
         <jodd.version>3.7.1</jodd.version>
-        <joda-time.version>2.9.5</joda-time.version>
+        <joda-time.version>2.9.6</joda-time.version>
         <HikariCP.version>2.5.1</HikariCP.version>
         <guava.version>20.0</guava.version>
         <orika.version>1.4.6</orika.version>
