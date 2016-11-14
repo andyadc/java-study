@@ -22,6 +22,10 @@
         <fastjson.version>1.2.21</fastjson.version>
         <jodd.version>3.7.1</jodd.version>
         <joda-time.version>2.9.5</joda-time.version>
+        <HikariCP.version>2.5.1</HikariCP.version>
+        <guava.version>20.0</guava.version>
+        <orika.version>1.4.6</orika.version>
+        <jedis.version>2.9.0</jedis.version>
         <slf4j.version>1.7.21</slf4j.version>
         <logback.version>1.1.7</logback.version>
         <junit.version>4.12</junit.version>
@@ -57,6 +61,35 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- JDBC Connection Pool -->
+        <!-- https://github.com/brettwooldridge/HikariCP -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${HikariCP.version}</version>
+        </dependency>
+
+        <!-- bean mapping -->
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>${orika.version}</version>
+        </dependency>
+
+        <!-- utility -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <!-- redis client -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
         </dependency>
 
         <!-- test -->
