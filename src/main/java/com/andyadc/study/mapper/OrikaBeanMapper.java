@@ -7,6 +7,8 @@ import ma.glasnost.orika.impl.DefaultMapperFactory;
 import java.util.List;
 
 /**
+ * 简单封装orika, 实现深度转换Bean<->Bean的Mapper
+ *
  * @author andaicheng
  * @version 2016/11/14
  */
