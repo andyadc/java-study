@@ -19,6 +19,7 @@
 
     <properties>
         <cglib.version>3.2.4</cglib.version>
+        <fastjson.version>1.2.21</fastjson.version>
         <jodd.version>3.7.1</jodd.version>
         <joda-time.version>2.9.5</joda-time.version>
         <slf4j.version>1.7.21</slf4j.version>
@@ -36,6 +37,13 @@
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
+        </dependency>
+
+        <!-- json -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
 
         <!-- log -->
