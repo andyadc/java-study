@@ -13,19 +13,23 @@ public class VolatileTest {
         race++;
     }
 
-    public static void main(String[] args) {
-        Thread[] threads = new Thread[THREAD_COUNT];
+    public static void main(String[] args) throws InterruptedException {
+
         for (int i = 0; i < THREAD_COUNT; i++) {
-            threads[i] = new Thread(() -> {
-                for (int j = 0; j < 10000; j++) {
-                    increase();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int j = 0; j < 100; j ++){
+                        increase();
+                    }
                 }
-            });
-            threads[i].start();
+            }).start();
         }
 
-        //while (Thread.activeCount() > 1)
+        while (Thread.activeCount() > 1) {
+            Thread.yield();
+        }
 
-        System.out.println(race);
+        System.out.println("result: " + race);
     }
 }
