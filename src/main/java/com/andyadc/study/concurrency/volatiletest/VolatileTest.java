@@ -2,7 +2,6 @@ package com.andyadc.study.concurrency.volatiletest;
 
 /**
  * @author andaicheng
- * @version 2016/11/14
  */
 public class VolatileTest {
 
@@ -14,7 +13,6 @@ public class VolatileTest {
     }
 
     public static void main(String[] args) throws InterruptedException {
-
         for (int i = 0; i < THREAD_COUNT; i++) {
             new Thread(new Runnable() {
                 @Override
