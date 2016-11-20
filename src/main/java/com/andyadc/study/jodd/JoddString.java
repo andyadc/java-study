@@ -11,5 +11,6 @@ public class JoddString {
     public static void main(String[] args) {
         System.out.println(StringUtil.repeat("a", 4));
         System.out.println(StringUtil.replaceLast("abcdefg", "cd", "xy"));
+        System.out.println(StringUtil.capitalize("abc"));
     }
 }
