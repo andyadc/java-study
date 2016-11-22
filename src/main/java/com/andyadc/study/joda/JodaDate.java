@@ -1,4 +1,4 @@
-package com.andyadc.study.concurrency.joda;
+package com.andyadc.study.joda;
 
 import org.joda.time.DateTime;
 
