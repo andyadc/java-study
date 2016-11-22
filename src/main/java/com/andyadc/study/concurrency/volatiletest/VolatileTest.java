@@ -5,7 +5,7 @@ package com.andyadc.study.concurrency.volatiletest;
  */
 public class VolatileTest {
 
-    public static volatile int race = 0;
+    private static volatile int race = 0;
     private static final int THREAD_COUNT = 20;
 
     public static void increase() {
@@ -17,7 +17,7 @@ public class VolatileTest {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    for (int j = 0; j < 100; j ++){
+                    for (int j = 0; j < 100; j++) {
                         increase();
                     }
                 }
