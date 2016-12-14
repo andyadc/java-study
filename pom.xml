@@ -22,6 +22,7 @@
     </developers>
 
     <properties>
+        <guice.version>4.1.0</guice.version>
         <cglib.version>3.2.4</cglib.version>
         <fastjson.version>1.2.21</fastjson.version>
         <jodd.version>3.7.1</jodd.version>
@@ -45,6 +46,13 @@
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
+        </dependency>
+
+        <!-- guice -->
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
         </dependency>
 
         <!-- json -->
@@ -136,6 +144,11 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>${joda-time.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.joda</groupId>
+            <artifactId>joda-convert</artifactId>
+            <version>1.8.1</version>
         </dependency>
 
     </dependencies>
