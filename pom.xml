@@ -5,14 +5,18 @@
     <groupId>com.andyadc</groupId>
     <artifactId>java-study</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>redis-study</module>
-        <module>concurrency-study</module>
-    </modules>
     <packaging>pom</packaging>
 
     <name>java-study</name>
     <url>https://github.com/andyadc/java-study</url>
+
+    <modules>
+        <module>redis-study</module>
+        <module>concurrency-study</module>
+        <module>jdbc-study</module>
+        <module>utilities</module>
+        <module>dependency-injection-study</module>
+    </modules>
 
     <developers>
         <developer>
@@ -22,16 +26,7 @@
     </developers>
 
     <properties>
-        <guice.version>4.1.0</guice.version>
-        <cglib.version>3.2.4</cglib.version>
-        <fastjson.version>1.2.21</fastjson.version>
-        <jodd.version>3.7.1</jodd.version>
-        <joda-time.version>2.9.6</joda-time.version>
-        <HikariCP.version>2.5.1</HikariCP.version>
-        <guava.version>20.0</guava.version>
-        <orika.version>1.4.6</orika.version>
-        <jedis.version>2.9.0</jedis.version>
-        <slf4j.version>1.7.21</slf4j.version>
+        <slf4j.version>1.7.22</slf4j.version>
         <logback.version>1.1.7</logback.version>
         <junit.version>4.12</junit.version>
 
@@ -40,28 +35,6 @@
     </properties>
 
     <dependencies>
-
-        <!-- cglib -->
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>${cglib.version}</version>
-        </dependency>
-
-        <!-- guice -->
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-            <version>${guice.version}</version>
-        </dependency>
-
-        <!-- json -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
-
         <!-- log -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -75,35 +48,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- JDBC Connection Pool -->
-        <!-- https://github.com/brettwooldridge/HikariCP -->
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>${HikariCP.version}</version>
-        </dependency>
-
-        <!-- bean mapping -->
-        <dependency>
-            <groupId>ma.glasnost.orika</groupId>
-            <artifactId>orika-core</artifactId>
-            <version>${orika.version}</version>
-        </dependency>
-
-        <!-- utility -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-
-        <!-- redis client -->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
-        </dependency>
-
         <!-- test -->
         <dependency>
             <groupId>junit</groupId>
@@ -111,46 +55,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- jodd -->
-        <dependency>
-            <groupId>org.jodd</groupId>
-            <artifactId>jodd-jtx</artifactId>
-            <version>${jodd.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jodd</groupId>
-            <artifactId>jodd-db</artifactId>
-            <version>${jodd.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jodd</groupId>
-            <artifactId>jodd-http</artifactId>
-            <version>${jodd.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jodd</groupId>
-            <artifactId>jodd-madvoc</artifactId>
-            <version>${jodd.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jodd</groupId>
-            <artifactId>jodd-proxetta</artifactId>
-            <version>${jodd.version}</version>
-        </dependency>
-
-        <!-- joda-time -->
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.joda</groupId>
-            <artifactId>joda-convert</artifactId>
-            <version>1.8.1</version>
-        </dependency>
-
     </dependencies>
 
     <build>
