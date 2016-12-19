@@ -16,6 +16,7 @@
         <module>jdbc-study</module>
         <module>utilities</module>
         <module>dependency-injection-study</module>
+        <module>proxy-study</module>
     </modules>
 
     <developers>
