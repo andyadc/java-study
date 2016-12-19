@@ -11,18 +11,17 @@
     <packaging>jar</packaging>
 
     <name>proxy-study</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/andyadc/java-study</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <cglib.version>3.2.4</cglib.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
         </dependency>
     </dependencies>
 </project>
