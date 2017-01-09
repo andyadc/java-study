@@ -80,6 +80,7 @@ class DynamicHandler implements InvocationHandler {
         return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
 
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         before();
         Object ret = method.invoke(target, args);
