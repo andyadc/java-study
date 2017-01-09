@@ -1240,6 +1240,7 @@ public abstract class Strman {
      *
      * @param input The string to trim.
      * @param chars The characters to trim.
+     *
      * @return Returns the trimmed string.
      */
     public static Optional<String> trimStart(final String input, String... chars) {
@@ -1269,6 +1270,7 @@ public abstract class Strman {
      *
      * @param input The string to trim.
      * @param chars The characters to trim.
+     *
      * @return Returns the trimmed string.
      */
     public static Optional<String> trimEnd(final String input, String... chars) {
