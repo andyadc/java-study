@@ -17,6 +17,7 @@
         <module>utilities</module>
         <module>dependency-injection-study</module>
         <module>proxy-study</module>
+        <module>design-pattern</module>
     </modules>
 
     <developers>
