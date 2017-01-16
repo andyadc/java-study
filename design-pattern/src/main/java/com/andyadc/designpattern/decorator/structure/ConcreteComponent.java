@@ -6,5 +6,10 @@ package com.andyadc.designpattern.decorator.structure;
  * @author andaicheng
  * @version 2017/1/16
  */
-public class ConcreteComponent {
+public class ConcreteComponent implements Component {
+
+    @Override
+    public void sampleOperation() {
+        // 相关的业务代码
+    }
 }

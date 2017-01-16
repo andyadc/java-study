@@ -7,4 +7,5 @@ package com.andyadc.designpattern.decorator.structure;
  * @version 2017/1/16
  */
 public interface Component {
+    void sampleOperation();
 }

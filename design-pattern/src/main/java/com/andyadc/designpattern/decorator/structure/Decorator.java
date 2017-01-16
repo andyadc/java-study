@@ -6,5 +6,16 @@ package com.andyadc.designpattern.decorator.structure;
  * @author andaicheng
  * @version 2017/1/16
  */
-public class Decorator {
+public class Decorator implements Component {
+
+    private Component component;
+
+    public Decorator(Component component) {
+    }
+
+    @Override
+    public void sampleOperation() {
+        // 委派给构件
+        component.sampleOperation();
+    }
 }

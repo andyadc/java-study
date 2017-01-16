@@ -6,5 +6,15 @@ package com.andyadc.designpattern.decorator.structure;
  * @author andaicheng
  * @version 2017/1/16
  */
-public class ConcreteDecoratorA {
+public class ConcreteDecoratorA extends Decorator {
+
+    public ConcreteDecoratorA(Component component) {
+        super(component);
+    }
+
+    @Override
+    public void sampleOperation() {
+        super.sampleOperation();
+        // 相关的业务代码
+    }
 }
