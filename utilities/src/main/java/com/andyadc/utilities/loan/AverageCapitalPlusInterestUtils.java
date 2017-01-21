@@ -64,9 +64,9 @@ public class AverageCapitalPlusInterestUtils {
      */
     public static Map<Integer, BigDecimal> getPerMonthPrincipal(double invest, double yearRate, int totalmonth) {
         double monthRate = yearRate / 12;
-        BigDecimal monthIncome = new BigDecimal(invest)
-                .multiply(new BigDecimal(monthRate * Math.pow(1 + monthRate, totalmonth)))
-                .divide(new BigDecimal(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_DOWN);
+        BigDecimal monthIncome = BigDecimal.valueOf(invest)
+                .multiply(BigDecimal.valueOf(monthRate * Math.pow(1 + monthRate, totalmonth)))
+                .divide(BigDecimal.valueOf(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_DOWN);
         Map<Integer, BigDecimal> mapInterest = getPerMonthInterest(invest, yearRate, totalmonth);
         Map<Integer, BigDecimal> mapPrincipal = new HashMap<>();
 
@@ -104,9 +104,9 @@ public class AverageCapitalPlusInterestUtils {
      */
     public static double getPrincipalInterestCount(double invest, double yearRate, int totalmonth) {
         double monthRate = yearRate / 12;
-        BigDecimal perMonthInterest = new BigDecimal(invest)
-                .multiply(new BigDecimal(monthRate * Math.pow(1 + monthRate, totalmonth)))
-                .divide(new BigDecimal(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_DOWN);
+        BigDecimal perMonthInterest = BigDecimal.valueOf(invest)
+                .multiply(BigDecimal.valueOf(monthRate * Math.pow(1 + monthRate, totalmonth)))
+                .divide(BigDecimal.valueOf(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_DOWN);
         BigDecimal count = perMonthInterest.multiply(new BigDecimal(totalmonth));
         count = count.setScale(2, BigDecimal.ROUND_DOWN);
         return count.doubleValue();
