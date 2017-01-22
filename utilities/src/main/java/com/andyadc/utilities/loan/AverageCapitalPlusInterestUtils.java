@@ -26,7 +26,7 @@ public class AverageCapitalPlusInterestUtils {
         double monthRate = yearRate / 12;
         BigDecimal monthIncome = new BigDecimal(invest)
                 .multiply(new BigDecimal(monthRate * Math.pow(1 + monthRate, totalmonth)))
-                .divide(new BigDecimal(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_DOWN);
+                .divide(new BigDecimal(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_HALF_UP);
         return monthIncome.doubleValue();
     }
 
@@ -47,7 +47,7 @@ public class AverageCapitalPlusInterestUtils {
         for (int i = 1; i < totalmonth + 1; i++) {
             BigDecimal multiply = new BigDecimal(invest).multiply(new BigDecimal(monthRate));
             BigDecimal sub = new BigDecimal(Math.pow(1 + monthRate, totalmonth)).subtract(new BigDecimal(Math.pow(1 + monthRate, i - 1)));
-            monthInterest = multiply.multiply(sub).divide(new BigDecimal(Math.pow(1 + monthRate, totalmonth) - 1), 6, BigDecimal.ROUND_DOWN);
+            monthInterest = multiply.multiply(sub).divide(new BigDecimal(Math.pow(1 + monthRate, totalmonth) - 1), 6, BigDecimal.ROUND_HALF_UP);
             monthInterest = monthInterest.setScale(2, BigDecimal.ROUND_DOWN);
             map.put(i, monthInterest);
         }
@@ -66,7 +66,7 @@ public class AverageCapitalPlusInterestUtils {
         double monthRate = yearRate / 12;
         BigDecimal monthIncome = BigDecimal.valueOf(invest)
                 .multiply(BigDecimal.valueOf(monthRate * Math.pow(1 + monthRate, totalmonth)))
-                .divide(BigDecimal.valueOf(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_DOWN);
+                .divide(BigDecimal.valueOf(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_HALF_UP);
         Map<Integer, BigDecimal> mapInterest = getPerMonthInterest(invest, yearRate, totalmonth);
         Map<Integer, BigDecimal> mapPrincipal = new HashMap<>();
 
@@ -106,16 +106,16 @@ public class AverageCapitalPlusInterestUtils {
         double monthRate = yearRate / 12;
         BigDecimal perMonthInterest = BigDecimal.valueOf(invest)
                 .multiply(BigDecimal.valueOf(monthRate * Math.pow(1 + monthRate, totalmonth)))
-                .divide(BigDecimal.valueOf(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_DOWN);
+                .divide(BigDecimal.valueOf(Math.pow(1 + monthRate, totalmonth) - 1), 2, BigDecimal.ROUND_HALF_UP);
         BigDecimal count = perMonthInterest.multiply(new BigDecimal(totalmonth));
         count = count.setScale(2, BigDecimal.ROUND_DOWN);
         return count.doubleValue();
     }
 
     public static void main(String[] args) {
-        double invest = 20000; // 本金
-        int month = 12;
-        double yearRate = 0.15; // 年利率
+        double invest = 100000; // 本金
+        int month = 6;
+        double yearRate = 0.12; // 年利率
         double perMonthPrincipalInterest = getPerMonthPrincipalInterest(invest, yearRate, month);
         System.out.println("等额本息---每月还款本息：" + perMonthPrincipalInterest);
         Map<Integer, BigDecimal> mapInterest = getPerMonthInterest(invest, yearRate, month);
