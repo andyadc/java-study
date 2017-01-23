@@ -28,6 +28,13 @@ public class Julia {
         keypad.stop();
         keypad.play();
         keypad.stop();
+
+        System.out.println("----------------------------");
+
+        MacroCommand macroCommand = new MacroAudioCommand();
+        macroCommand.add(playCommand);
+        macroCommand.add(stopCommand);
+        macroCommand.execute();
     }
 
 }
