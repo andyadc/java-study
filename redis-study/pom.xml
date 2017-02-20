@@ -19,13 +19,14 @@
     </properties>
 
     <dependencies>
-        <!-- redis client -->
+        <!-- Redis java client -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${jedis.version}</version>
         </dependency>
 
+        <!-- Redis based In-Memory Data Grid for Java -->
         <!-- Distributed locks -->
         <dependency>
             <groupId>org.redisson</groupId>
