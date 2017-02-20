@@ -14,7 +14,7 @@
     <url>https://github.com/andyadc/java-study</url>
 
     <properties>
-        <HikariCP.version>2.5.1</HikariCP.version>
+        <HikariCP.version>2.6.0</HikariCP.version>
     </properties>
 
     <dependencies>
