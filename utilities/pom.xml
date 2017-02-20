@@ -19,6 +19,7 @@
         <joda-time.version>2.9.7</joda-time.version>
         <guava.version>20.0</guava.version>
         <orika.version>1.5.0</orika.version>
+        <dozer.version>5.5.1</dozer.version>
         <commons-codec.version>1.10</commons-codec.version>
         <commons-lang3.version>3.5</commons-lang3.version>
     </properties>
@@ -36,6 +37,11 @@
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
             <version>${orika.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>${dozer.version}</version>
         </dependency>
 
         <dependency>
