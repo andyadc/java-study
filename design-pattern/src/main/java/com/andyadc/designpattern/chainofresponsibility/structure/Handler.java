@@ -1,6 +1,8 @@
 package com.andyadc.designpattern.chainofresponsibility.structure;
 
 /**
+ * 抽象处理者角色
+ *
  * @author andaicheng
  * @version 2017/3/8
  */
