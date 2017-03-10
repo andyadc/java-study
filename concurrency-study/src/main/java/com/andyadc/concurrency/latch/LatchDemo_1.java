@@ -25,8 +25,12 @@ public class LatchDemo_1 {
             futures.add(es.submit(new Runner(begin, end)));
         }
 
-        begin.countDown();
+        //预备
+        TimeUnit.SECONDS.sleep(10);
 
+        //发令枪响
+        begin.countDown();
+        //等待跑者跑完
         end.await();
 
         int sum = 0;
@@ -54,12 +58,13 @@ class Runner implements Callable<Integer> {
     public Integer call() throws Exception {
         //跑步成绩
         int score = new Random().nextInt(10);
-        System.out.println("score:" + score);
+
         //等待发令枪响
         begin.await();
         TimeUnit.SECONDS.sleep(score);
         //跑步结束
         end.countDown();
+        System.out.println("score:" + score);
         return score;
     }
 }
