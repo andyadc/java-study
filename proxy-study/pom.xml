@@ -14,7 +14,7 @@
     <url>https://github.com/andyadc/java-study</url>
 
     <properties>
-        <cglib.version>3.2.4</cglib.version>
+        <cglib.version>3.2.5</cglib.version>
         <javassist.version>3.21.0-GA</javassist.version>
     </properties>
 
