@@ -15,7 +15,8 @@
 
     <properties>
         <guice.version>4.1.0</guice.version>
-        <cglib.version>3.2.4</cglib.version>
+        <cglib.version>3.2.5</cglib.version>
+        <dagger.version>2.9</dagger.version>
     </properties>
 
     <dependencies>
@@ -32,5 +33,19 @@
             <artifactId>guice</artifactId>
             <version>${guice.version}</version>
         </dependency>
+
+        <!-- A fast dependency injector for Android and Java. -->
+        <dependency>
+            <groupId>com.google.dagger</groupId>
+            <artifactId>dagger</artifactId>
+            <version>${dagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.dagger</groupId>
+            <artifactId>dagger-compiler</artifactId>
+            <version>${dagger.version}</version>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 </project>
