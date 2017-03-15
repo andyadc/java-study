@@ -19,6 +19,7 @@
         <module>proxy-study</module>
         <module>design-pattern</module>
         <module>spring-study</module>
+        <module>data-structure-and-algorithm</module>
     </modules>
 
     <developers>
