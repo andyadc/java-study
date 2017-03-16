@@ -20,6 +20,7 @@
         <module>design-pattern</module>
         <module>spring-study</module>
         <module>data-structure-and-algorithm</module>
+        <module>jvm-study</module>
     </modules>
 
     <developers>
