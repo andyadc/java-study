@@ -25,6 +25,6 @@ public class ProjectManager extends Handler {
                 return getSuccessor().handleFeeRequest(user, fee);
             }
         }
-        return null;
+        return str;
     }
 }
