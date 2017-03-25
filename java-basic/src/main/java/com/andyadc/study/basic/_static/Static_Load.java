@@ -1,6 +1,8 @@
 package com.andyadc.study.basic._static;
 
 /**
+ * 初始化父类的静态代码块--->初始化子类的静态代码块-->初始化父类的非静态代码块--->初始化父类构造函数--->初始化子类非静态代码--->初始化子类构造函数
+ *
  * @author andaicheng
  * @version 2017/3/25
  */
@@ -43,4 +45,7 @@ class Parent {
         System.out.println("Parent constructor method.");
     }
 
+    static {
+        System.out.println("Parent static code block2.");
+    }
 }
