@@ -18,13 +18,13 @@ class Child extends Parent {
     }
 
     {
-        System.out.println("Child general code block.");
+        System.out.println("Child construct code block.");
     }
 
     Child() {
         System.out.println("Child constructor method.");
     }
-    
+
 }
 
 class Parent {
@@ -34,7 +34,7 @@ class Parent {
     }
 
     {
-        System.out.println("Parent general code block.");
+        System.out.println("Parent construct code block.");
     }
 
     Parent() {
