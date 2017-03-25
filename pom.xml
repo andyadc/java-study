@@ -21,6 +21,7 @@
         <module>spring-study</module>
         <module>data-structure-and-algorithm</module>
         <module>jvm-study</module>
+        <module>java-basic</module>
     </modules>
 
     <developers>
