@@ -8,6 +8,8 @@ public class Static_Load {
 
     public static void main(String[] args) {
         new Child();
+        System.out.println("------------------------");
+        new Child();
     }
 }
 
