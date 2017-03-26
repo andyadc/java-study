@@ -62,12 +62,28 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
     }
 
     public boolean add(AnyType e) {
-
+        add(size(), e);
         return true;
     }
 
     public void add(int idx, AnyType e) {
+        if (theItems.length == size()) {
+            ensureCapacity(size() * 2 + 1);
+        }
+        for (int i = theSize; i > idx; i--) {
+            theItems[i] = theItems[i - 1];
+        }
+        theItems[idx] = e;
+        theSize++;
+    }
 
+    public AnyType remove(int idx) {
+        AnyType removedItem = theItems[idx];
+        for (int i = idx; i < size() - 1; i++) {
+            theItems[i] = theItems[i + 1];
+        }
+        theSize--;
+        return removedItem;
     }
 
     @Override
