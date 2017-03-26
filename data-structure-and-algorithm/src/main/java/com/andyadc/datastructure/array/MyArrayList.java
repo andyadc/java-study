@@ -30,11 +30,43 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
         return theSize == 0;
     }
 
+    public void trimToSize() {
+        ensureCapacity(size());
+    }
+
+    public AnyType get(int idx) {
+        if (idx < 0 || idx > theSize) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return theItems[idx];
+    }
+
+    public AnyType set(int idx, AnyType newVal) {
+        if (idx < 0 || idx > theSize) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        AnyType old = theItems[idx];
+        theItems[idx] = newVal;
+        return old;
+    }
+
     public void ensureCapacity(int newCapacity) {
         if (newCapacity < theSize) {
             return;
         }
         AnyType[] old = theItems;
+        theItems = (AnyType[]) new Object[newCapacity];
+        for (int i = 0; i < size(); i++) {
+            theItems[i] = old[i];
+        }
+    }
+
+    public boolean add(AnyType e) {
+
+        return true;
+    }
+
+    public void add(int idx, AnyType e) {
 
     }
 
