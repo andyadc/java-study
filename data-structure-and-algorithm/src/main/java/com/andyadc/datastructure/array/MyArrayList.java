@@ -1,6 +1,7 @@
 package com.andyadc.datastructure.array;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * @author andaicheng
@@ -88,7 +89,31 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 
     @Override
     public Iterator<AnyType> iterator() {
-        return null;
+        return new MyArrayListIterator();
+    }
+
+    private class MyArrayListIterator implements Iterator<AnyType> {
+
+        private int current = 0;
+
+        @Override
+        public boolean hasNext() {
+            return current < size();
+        }
+
+        @Override
+        public AnyType next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return theItems[current++];
+        }
+
+        @Override
+        public void remove() {
+            MyArrayList.this.remove(--current);
+        }
+
     }
 
 }
