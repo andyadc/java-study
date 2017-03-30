@@ -1,4 +1,4 @@
-package com.andyadc.designpattern.builder;
+package com.andyadc.designpattern.builder.structure;
 
 /**
  * 产品类Product
