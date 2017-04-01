@@ -9,6 +9,14 @@ import java.util.Iterator;
 public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 
     private static class Node<AnyType> {
+
+        public Node(AnyType data, Node<AnyType> prev, Node<AnyType> next) {
+            this.data = data;
+            this.prev = prev;
+            this.next = next;
+        }
+
+        public AnyType data;
         public Node<AnyType> prev;
         public Node<AnyType> next;
     }
