@@ -8,6 +8,11 @@ import java.util.Iterator;
  */
 public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 
+    private static class Node<AnyType> {
+        public Node<AnyType> prev;
+        public Node<AnyType> next;
+    }
+
     @Override
     public Iterator<AnyType> iterator() {
         return null;
