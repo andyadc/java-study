@@ -1,4 +1,4 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>java-study</artifactId>
@@ -7,20 +7,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>concurrency-study</artifactId>
+    <artifactId>distributed-system</artifactId>
     <packaging>jar</packaging>
 
-    <name>concurrency-study</name>
+    <name>distributed-system</name>
     <url>https://github.com/andyadc/java-study</url>
 
     <dependencies>
-        <!-- Jersey JSR-166e Repackaged. See http://gee.cs.oswego.edu/dl/concurrency-interest/index.html -->
         <dependency>
-            <groupId>org.glassfish.jersey.bundles.repackaged</groupId>
-            <artifactId>jersey-jsr166e</artifactId>
-            <version>2.25</version>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-core</artifactId>
+            <version>1.5.10</version>
         </dependency>
-
     </dependencies>
-
 </project>

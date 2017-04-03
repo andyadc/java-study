@@ -22,6 +22,7 @@
         <module>data-structure-and-algorithm</module>
         <module>jvm-study</module>
         <module>java-basic</module>
+        <module>distributed-system</module>
     </modules>
 
     <developers>
