@@ -13,11 +13,15 @@
     <name>distributed-system</name>
     <url>https://github.com/andyadc/java-study</url>
 
+    <properties>
+        <hystrix.version>1.5.10</hystrix.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.netflix.hystrix</groupId>
             <artifactId>hystrix-core</artifactId>
-            <version>1.5.10</version>
+            <version>${hystrix.version}</version>
         </dependency>
     </dependencies>
 </project>
