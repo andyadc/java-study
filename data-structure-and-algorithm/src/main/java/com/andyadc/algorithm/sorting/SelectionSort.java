@@ -21,9 +21,11 @@ public class SelectionSort implements SortingAlgorithm {
                     min = j;
                 }
             }
-
+            int temp = array[min];
+            array[min] = array[i];
+            array[i] = temp;
         }
-        return new int[0];
+        return array;
     }
 
 }
