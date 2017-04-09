@@ -32,4 +32,5 @@ public class SortingAlgorithmTest {
         sorting.doSort(inputArray);
         System.out.println("sorted output: " + Arrays.toString(inputArray));
     }
+
 }
