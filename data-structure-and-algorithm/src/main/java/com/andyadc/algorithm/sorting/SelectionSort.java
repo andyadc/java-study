@@ -1,6 +1,11 @@
 package com.andyadc.algorithm.sorting;
 
 /**
+ * 选择排序
+ * 在未排序序列中找到最小或是最大的元素,存放到排序序列的起始位置;
+ * 然后再从剩余的未排序的元素中继续寻找最小或是最大的元素.
+ * 这样子持续进行下去,直到所有的元素排好顺序.
+ *
  * @author andaicheng
  * @version 2017/4/4
  */
@@ -20,4 +25,5 @@ public class SelectionSort implements SortingAlgorithm {
         }
         return new int[0];
     }
+
 }
