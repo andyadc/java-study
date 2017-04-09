@@ -16,9 +16,9 @@ public class SortingAlgorithmTest {
     public void testSelectionSort() {
         SortingAlgorithm sorting = new SelectionSort();
         int[] inputArray = {10, 34, 2, 56, 7, 67, 88, 42};
-        int[] outputArray = sorting.doSort(inputArray);
-
         System.out.println("input: " + Arrays.toString(inputArray));
+
+        int[] outputArray = sorting.doSort(inputArray);
         System.out.println("sorted output: " + Arrays.toString(outputArray));
     }
 }
