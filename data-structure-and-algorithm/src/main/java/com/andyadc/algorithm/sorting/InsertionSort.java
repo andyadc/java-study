@@ -15,11 +15,12 @@ public class InsertionSort implements SortingAlgorithm {
         int temp;
         for (int i = 0; i < array.length; i++) {
             temp = array[i];
-            while (i > 0 && array[i - 1] > temp) {
-                array[i] = array[i - 1];
-                i--;
+            int j = i;
+            while (j > 0 && array[j - 1] > temp) {
+                array[j] = array[j - 1];
+                j--;
             }
-            array[i] = temp;
+            array[j] = temp;
         }
         return array;
     }
