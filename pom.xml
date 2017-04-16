@@ -23,6 +23,7 @@
         <module>jvm-study</module>
         <module>java-basic</module>
         <module>distributed-system</module>
+        <module>mybatis-study</module>
     </modules>
 
     <developers>
