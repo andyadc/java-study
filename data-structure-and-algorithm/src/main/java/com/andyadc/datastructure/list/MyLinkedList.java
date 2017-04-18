@@ -1,6 +1,8 @@
 package com.andyadc.datastructure.list;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * @author andaicheng
@@ -103,14 +105,38 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 
     private class LinkedListIterator implements java.util.Iterator<AnyType> {
 
+        private Node<AnyType> current = beginMaker.next;
+        private int expectedModCount = modCount;
+        private boolean okToRemove = false;
+
         @Override
         public boolean hasNext() {
-            return false;
+            return current != endMaker;
         }
 
         @Override
         public AnyType next() {
-            return null;
+            if (modCount != expectedModCount)
+                throw new ConcurrentModificationException();
+            if (!hasNext())
+                throw new NoSuchElementException();
+
+            AnyType next = current.data;
+            current = current.next;
+            okToRemove = true;
+            return next;
         }
+
+        public void remove() {
+            if (modCount != expectedModCount)
+                throw new ConcurrentModificationException();
+            if (!okToRemove)
+                throw new IllegalStateException();
+
+            MyLinkedList.this.remove(current.prev);
+            okToRemove = false;
+            expectedModCount++;
+        }
+
     }
 }
