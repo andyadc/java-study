@@ -1,4 +1,4 @@
-package com.andyadc.datastructure.array;
+package com.andyadc.datastructure.list;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
