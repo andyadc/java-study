@@ -66,7 +66,6 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
         return node;
     }
 
-
     public AnyType remove(Node<AnyType> node) {
         node.next.prev = node.prev;
         node.prev.next = node.next;
