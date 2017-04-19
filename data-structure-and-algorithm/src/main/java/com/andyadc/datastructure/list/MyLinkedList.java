@@ -67,7 +67,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
     }
 
 
-    private AnyType remove(Node<AnyType> node) {
+    public AnyType remove(Node<AnyType> node) {
         node.next.prev = node.prev;
         node.prev.next = node.next;
         theSize--;
@@ -127,6 +127,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
             return next;
         }
 
+        @Override
         public void remove() {
             if (modCount != expectedModCount)
                 throw new ConcurrentModificationException();
