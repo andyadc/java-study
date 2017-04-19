@@ -41,7 +41,27 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
         return getNode(idx).data;
     }
 
-    public void addBefore(Node<AnyType> node, AnyType e) {
+    public void addFirst() {
+        //TODO
+    }
+
+    public void addLast() {
+        //TODO
+    }
+
+    public void removeFirst() {
+        //TODO
+    }
+
+    public void removeLast() {
+        //TODO
+    }
+
+    public void removeAll(Iterable<? extends AnyType> items) {
+        //TODO
+    }
+
+    private void addBefore(Node<AnyType> node, AnyType e) {
         Node<AnyType> newNode = new Node<>(e, node.prev, node);
         newNode.prev.next = newNode;
         node.prev = newNode;
@@ -49,7 +69,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
         modCount++;
     }
 
-    public Node<AnyType> getNode(int idx) {
+    private Node<AnyType> getNode(int idx) {
         Node<AnyType> node;
         if (idx < 0 || idx > size())
             throw new IndexOutOfBoundsException();
@@ -66,7 +86,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
         return node;
     }
 
-    public AnyType remove(Node<AnyType> node) {
+    private AnyType remove(Node<AnyType> node) {
         node.next.prev = node.prev;
         node.prev.next = node.next;
         theSize--;
@@ -75,6 +95,9 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
         return node.data;
     }
 
+    /**
+     * Change the size of this collection to zero
+     */
     public void clear() {
         beginMaker = new Node<>(null, null, null);
         endMaker = new Node<>(null, beginMaker, null);
