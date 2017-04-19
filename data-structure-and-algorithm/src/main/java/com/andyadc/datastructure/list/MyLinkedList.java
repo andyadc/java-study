@@ -24,7 +24,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
         return size() == 0;
     }
 
-    private int size() {
+    public int size() {
         return theSize;
     }
 
