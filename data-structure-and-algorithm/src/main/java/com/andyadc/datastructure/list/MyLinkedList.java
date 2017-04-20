@@ -41,11 +41,11 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
         return getNode(idx).data;
     }
 
-    public void addFirst() {
+    public void addFirst(AnyType e) {
         //TODO
     }
 
-    public void addLast() {
+    public void addLast(AnyType e) {
         //TODO
     }
 
