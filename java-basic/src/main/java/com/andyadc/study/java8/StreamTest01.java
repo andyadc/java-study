@@ -25,7 +25,7 @@ public class StreamTest01 {
     private static void upCaseAfter8(List<String> list) {
         Set<String> strings = list.stream().filter(s -> !Character.isDigit(s.charAt(0))).map(String::toUpperCase).collect(Collectors.toSet());
 
-        strings.stream().forEach(s -> System.out.println(s));
+        strings.forEach(s -> System.out.println(s));
     }
 
     private static void before8(List<String> list) {
