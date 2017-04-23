@@ -13,4 +13,15 @@
     <name>java-basic</name>
     <url>https://github.com/andyadc/java-study</url>
 
+    <dependencies>
+        <!-- http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/ -->
+        <!-- The jmh is a Java harness for building, running, and analysing
+        nano/micro/macro benchmarks written in Java and other languages targeting the JVM. -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>1.18</version>
+        </dependency>
+    </dependencies>
+
 </project>
