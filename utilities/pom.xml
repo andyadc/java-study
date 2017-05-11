@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>java-study</artifactId>
@@ -14,7 +14,7 @@
     <url>https://github.com/andyadc/java-study</url>
 
     <properties>
-        <fastjson.version>1.2.31</fastjson.version>
+        <fastjson.version>1.2.32</fastjson.version>
         <jodd.version>3.8.1</jodd.version>
         <joda-time.version>2.9.9</joda-time.version>
         <guava.version>20.0</guava.version>
@@ -23,6 +23,7 @@
         <commons-codec.version>1.10</commons-codec.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-text.version>1.0</commons-text.version>
+        <javatuples.version>1.2</javatuples.version>
     </properties>
 
     <dependencies>
@@ -106,5 +107,43 @@
             <artifactId>commons-text</artifactId>
             <version>${commons-text.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.javatuples</groupId>
+            <artifactId>javatuples</artifactId>
+            <version>${javatuples.version}</version>
+        </dependency>
+
+        <!-- Collections -->
+        <!--
+            High Performance Primitive Collections.
+            Fundamental data structures (maps, sets, lists, stacks, queues)
+            generated for combinations of object and primitive types to conserve JVM memory and speed up execution.
+        -->
+        <dependency>
+            <groupId>com.carrotsearch</groupId>
+            <artifactId>hppc</artifactId>
+            <version>0.7.2</version>
+        </dependency>
+
+        <!-- Java Objects size estimation. -->
+        <dependency>
+            <groupId>com.carrotsearch</groupId>
+            <artifactId>java-sizeof</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>chronicle-map</artifactId>
+            <version>3.13.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>koloboke-impl-jdk8</artifactId>
+            <version>0.6.8</version>
+        </dependency>
+
     </dependencies>
 </project>
