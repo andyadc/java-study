@@ -21,12 +21,19 @@
             <version>2.25</version>
         </dependency>
 
+        <!--  Concurrent Programming Framework -->
         <dependency>
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
             <version>3.3.6</version>
         </dependency>
 
+        <!-- Conversant Disruptor - very low latency Java BlockingQueue -->
+        <dependency>
+            <groupId>com.conversantmedia</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>1.2.10</version>
+        </dependency>
     </dependencies>
 
 </project>
