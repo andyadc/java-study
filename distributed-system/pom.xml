@@ -14,7 +14,7 @@
     <url>https://github.com/andyadc/java-study</url>
 
     <properties>
-        <hystrix.version>1.5.10</hystrix.version>
+        <hystrix.version>1.5.12</hystrix.version>
     </properties>
 
     <dependencies>
