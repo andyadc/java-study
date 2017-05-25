@@ -17,7 +17,7 @@
         <fastjson.version>1.2.32</fastjson.version>
         <jodd.version>3.8.6</jodd.version>
         <joda-time.version>2.9.9</joda-time.version>
-        <guava.version>20.0</guava.version>
+        <guava.version>22.0</guava.version>
         <orika.version>1.5.1</orika.version>
         <dozer.version>5.5.1</dozer.version>
         <commons-codec.version>1.10</commons-codec.version>
