@@ -22,7 +22,7 @@
         <dozer.version>5.5.1</dozer.version>
         <commons-codec.version>1.10</commons-codec.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <commons-text.version>1.0</commons-text.version>
+        <commons-text.version>1.1</commons-text.version>
         <javatuples.version>1.2</javatuples.version>
     </properties>
 
