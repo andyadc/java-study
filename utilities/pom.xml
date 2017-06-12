@@ -14,7 +14,7 @@
     <url>https://github.com/andyadc/java-study</url>
 
     <properties>
-        <fastjson.version>1.2.32</fastjson.version>
+        <fastjson.version>1.2.33</fastjson.version>
         <jodd.version>3.8.6</jodd.version>
         <joda-time.version>2.9.9</joda-time.version>
         <guava.version>22.0</guava.version>
