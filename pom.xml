@@ -24,6 +24,7 @@
         <module>java-basic</module>
         <module>distributed-system</module>
         <module>mybatis-study</module>
+        <module>mq-study</module>
     </modules>
 
     <developers>
