@@ -6,10 +6,11 @@ package com.andyadc.study.jvm;
  */
 public class JavaVMStackSOF {
 
-    private int stackLength = 1;
+    private static int stackLength = 1;
 
     public void stackLeak() {
         stackLength++;
+        //System.out.println("-----" + stackLength);
         stackLeak();
     }
 
@@ -17,9 +18,9 @@ public class JavaVMStackSOF {
         JavaVMStackSOF oom = new JavaVMStackSOF();
         try {
             oom.stackLeak();
-        } catch (Exception e) {
-            System.out.println("stack length: " + oom.stackLength);
-            throw e;
+        } catch (Throwable e) {
+            System.out.println("stack length: " + stackLength);
+            //throw e;
         }
     }
 }
