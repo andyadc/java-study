@@ -14,11 +14,15 @@ public class TestGetClass {
         Class clz = TestGetClass.class;
         System.out.println(clz.newInstance());
 
-        // Class clz1 = new TestGetClass().getClass();
-        // System.out.println(clz1.newInstance());
+        System.out.println("----------------------");
 
-        // Class clz2 = Class.forName("com.andyadc.study.reflection.TestGetClass");
-        //System.out.println(clz2.newInstance());
+        Class clz1 = new TestGetClass().getClass();
+        System.out.println(clz1.newInstance());
+
+        System.out.println("----------------------");
+
+        Class clz2 = Class.forName("com.andyadc.study.reflection.TestGetClass");
+        System.out.println(clz2.newInstance());
 
 
     }
