@@ -6,10 +6,19 @@ package com.andyadc.study.classloader;
  */
 public class ClassLoaderTest {
 
-    public static void main(String[] args) {
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        System.out.println("current loader: " + loader);
-        System.out.println("parent loader: " + loader.getParent());
-        System.out.println("grandparent loader: " + loader.getParent().getParent());
+    public static void main(String[] args) throws Exception {
+
+        ClassLoader myLoader = new ClassLoader() {
+            @Override
+            public Class<?> loadClass(String name) throws ClassNotFoundException {
+                return super.loadClass(name);
+            }
+        };
+
+        Object obj = myLoader.loadClass("com.andyadc.study.classloader.ClassLoaderTest");
+        System.out.println(obj);
+
+        boolean flag = obj instanceof com.andyadc.study.classloader.ClassLoaderTest;
+        System.out.println(flag);
     }
 }
