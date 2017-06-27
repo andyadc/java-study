@@ -25,6 +25,7 @@
         <module>distributed-system</module>
         <module>mybatis-study</module>
         <module>mq-study</module>
+        <module>rpc-spring</module>
     </modules>
 
     <developers>
