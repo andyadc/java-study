@@ -26,6 +26,9 @@
         <module>mybatis-study</module>
         <module>mq-study</module>
         <module>rpc-spring</module>
+        <module>rpc-spring-sample-client</module>
+        <module>rpc-spring-sample-server</module>
+        <module>rpc-spring-sample-api</module>
     </modules>
 
     <developers>
