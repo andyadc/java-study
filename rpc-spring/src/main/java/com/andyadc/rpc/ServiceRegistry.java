@@ -40,7 +40,7 @@ public class ServiceRegistry {
     private ZooKeeper connectServer() {
         ZooKeeper zk = null;
         try {
-            zk = new ZooKeeper(registryAddress, 5000, new Watcher() {
+            zk = new ZooKeeper(registryAddress, RpcConstant.ZK_SESSION_TIMEOUT, new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
                     if (event.getState() == Event.KeeperState.SyncConnected) {
@@ -57,7 +57,7 @@ public class ServiceRegistry {
 
     private void createNode(ZooKeeper zk, String data) {
         try {
-            String path = zk.create("/registry", data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+            String path = zk.create(RpcConstant.ZK_DATA_PATH, data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
             LOG.debug("create zookeeper node ({} => {})", path, data);
         } catch (KeeperException | InterruptedException e) {
             LOG.error("", e);
