@@ -37,15 +37,17 @@ public class RpcProxy {
                         request.setParameters(args);
 
                         if (serviceDiscovery != null) {
-                            serverAddress = serviceDiscovery.discover();
+                            serverAddress = serviceDiscovery.discover(); // 发现服务
                         }
 
                         String[] array = serverAddress.split(":");
                         String host = array[0];
                         int port = Integer.parseInt(array[1]);
 
-                        
-                        return null;
+                        RpcClient client = new RpcClient(host, port); // 初始化 RPC 客户端
+                        RpcResponse response = client.send(request);
+
+                        return response.getResult();
                     }
                 });
     }

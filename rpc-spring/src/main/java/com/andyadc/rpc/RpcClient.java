@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * @author andaicheng
  * @version 2017/7/1
  */
-public class RpcClient extends SimpleChannelInboundHandler {
+public class RpcClient extends SimpleChannelInboundHandler<RpcResponse> {
 
     private static final Logger LOG = LoggerFactory.getLogger(RpcClient.class);
     private final Object obj = new Object();
@@ -31,7 +31,7 @@ public class RpcClient extends SimpleChannelInboundHandler {
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, RpcResponse response) throws Exception {
         this.response = response;
 
         synchronized (obj) {
