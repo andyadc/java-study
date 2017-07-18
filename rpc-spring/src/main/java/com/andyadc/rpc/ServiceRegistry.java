@@ -57,10 +57,12 @@ public class ServiceRegistry {
 
     private void createNode(ZooKeeper zk, String data) {
         try {
+            zk.create(RpcConstant.ZK_REGISTRY_PATH, "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             String path = zk.create(RpcConstant.ZK_DATA_PATH, data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
             LOG.debug("create zookeeper node ({} => {})", path, data);
         } catch (KeeperException | InterruptedException e) {
             LOG.error("", e);
+            e.printStackTrace();
         }
     }
 }

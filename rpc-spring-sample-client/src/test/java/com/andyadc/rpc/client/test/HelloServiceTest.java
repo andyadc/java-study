@@ -22,6 +22,7 @@ public class HelloServiceTest {
     @Test
     public void testHello() {
         HelloService helloService = rpcProxy.create(HelloService.class);
-        helloService.hello("adc");
+        String msg = helloService.hello("adc");
+        System.out.println("-------------------" + msg);
     }
 }
