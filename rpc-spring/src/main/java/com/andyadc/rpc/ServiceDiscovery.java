@@ -82,9 +82,9 @@ public class ServiceDiscovery {
             List<String> data = new ArrayList<>();
             for (String node : nodeList) {
                 byte[] bytes = zk.getData(RpcConstant.ZK_REGISTRY_PATH + "/" + node, false, null);
-                dataList.add(new String(bytes));
+                data.add(new String(bytes));
             }
-            LOG.debug("node data: {}", dataList);
+            LOG.debug("node data: {}", data);
             this.dataList = data;
         } catch (KeeperException | InterruptedException e) {
             LOG.error("", e);
