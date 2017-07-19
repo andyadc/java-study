@@ -59,15 +59,15 @@ public class ServiceRegistry {
     private void createNode(ZooKeeper zk, String data) {
         try {
             Stat stat = zk.exists(RpcConstant.ZK_REGISTRY_PATH, false);
-            LOG.info("stat: {}", stat);
+            LOG.info("node '{}' exists, stat: {}", RpcConstant.ZK_REGISTRY_PATH, stat);
             if (stat != null) {
                 zk.delete(RpcConstant.ZK_REGISTRY_PATH, stat.getVersion());
-                LOG.info("delete node: {}, version: {}", RpcConstant.ZK_REGISTRY_PATH, stat.getVersion());
+                LOG.info("delete node: '{}', version: {}", RpcConstant.ZK_REGISTRY_PATH, stat.getVersion());
             }
 
             zk.create(RpcConstant.ZK_REGISTRY_PATH, "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             String path = zk.create(RpcConstant.ZK_DATA_PATH, data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-            LOG.info("create zookeeper node ({} => {})", path, data);
+            LOG.info("create zookeeper node '{}' => '{}'", path, data);
         } catch (KeeperException | InterruptedException e) {
             LOG.error("createNode error!", e);
         }
