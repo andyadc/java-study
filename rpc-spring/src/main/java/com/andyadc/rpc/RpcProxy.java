@@ -1,5 +1,8 @@
 package com.andyadc.rpc;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -10,6 +13,8 @@ import java.util.UUID;
  * @version 2017/7/1
  */
 public class RpcProxy {
+
+    private static final Logger LOG = LoggerFactory.getLogger(RpcProxy.class);
 
     private String serverAddress;
     private ServiceDiscovery serviceDiscovery;
@@ -40,6 +45,7 @@ public class RpcProxy {
                             serverAddress = serviceDiscovery.discover(); // 发现服务
                         }
 
+                        LOG.info("serverAddress: {}", serverAddress);
                         String[] array = serverAddress.split(":");
                         String host = array[0];
                         int port = Integer.parseInt(array[1]);
