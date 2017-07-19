@@ -63,7 +63,7 @@ public class ServiceDiscovery {
             });
             latch.await();
         } catch (IOException | InterruptedException e) {
-            LOG.error("", e);
+            LOG.error("connectServer error!", e);
         }
         return zk;
     }
@@ -84,10 +84,10 @@ public class ServiceDiscovery {
                 byte[] bytes = zk.getData(RpcConstant.ZK_REGISTRY_PATH + "/" + node, false, null);
                 data.add(new String(bytes));
             }
-            LOG.debug("node data: {}", data);
+            LOG.info("node data: {}", data);
             this.dataList = data;
         } catch (KeeperException | InterruptedException e) {
-            LOG.error("", e);
+            LOG.error("watchNode error!", e);
         }
     }
 }

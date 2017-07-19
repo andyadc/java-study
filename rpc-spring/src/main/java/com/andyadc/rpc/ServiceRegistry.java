@@ -51,7 +51,7 @@ public class ServiceRegistry {
             });
             latch.await();
         } catch (IOException | InterruptedException e) {
-            LOG.error("", e);
+            LOG.error("connectServer error!", e);
         }
         return zk;
     }

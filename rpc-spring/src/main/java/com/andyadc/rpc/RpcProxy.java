@@ -41,6 +41,7 @@ public class RpcProxy {
                         request.setParameterTypes(method.getParameterTypes());
                         request.setParameters(args);
 
+                        LOG.info("RpcProxy {}", request);
                         if (serviceDiscovery != null) {
                             serverAddress = serviceDiscovery.discover(); // 发现服务
                         }
@@ -53,6 +54,7 @@ public class RpcProxy {
                         RpcClient client = new RpcClient(host, port); // 初始化 RPC 客户端
                         RpcResponse response = client.send(request);
 
+                        LOG.info("RpcProxy {}", response);
                         return response.getResult();
                     }
                 });

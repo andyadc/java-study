@@ -71,12 +71,13 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
+            LOG.info("serverAddress: {}", serverAddress);
             String[] array = serverAddress.split(":");
             String host = array[0];
             int port = Integer.parseInt(array[1]);
 
             ChannelFuture future = bootstrap.bind(host, port).sync();
-            LOG.debug("server started on port {}", port);
+            LOG.info("server started on port {}", port);
 
             if (serviceRegistry != null) {
                 serviceRegistry.register(serverAddress); // 注册服务地址

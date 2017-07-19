@@ -1,5 +1,7 @@
 package com.andyadc.rpc;
 
+import java.util.Arrays;
+
 /**
  * @author andaicheng
  * @version 2017/6/28
@@ -50,5 +52,16 @@ public class RpcRequest {
 
     public void setParameters(Object[] parameters) {
         this.parameters = parameters;
+    }
+
+    @Override
+    public String toString() {
+        return "RpcRequest{" +
+                "requestId='" + requestId + '\'' +
+                ", className='" + className + '\'' +
+                ", methodName='" + methodName + '\'' +
+                ", parameterTypes=" + Arrays.toString(parameterTypes) +
+                ", parameters=" + Arrays.toString(parameters) +
+                '}';
     }
 }

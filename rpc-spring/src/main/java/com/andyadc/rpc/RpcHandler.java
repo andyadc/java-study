@@ -33,6 +33,7 @@ public class RpcHandler extends SimpleChannelInboundHandler<RpcRequest> {
             response.setResult(result);
         } catch (Throwable t) {
             response.setError(t);
+            LOG.error("{}", t.getMessage());
         }
         ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
     }
