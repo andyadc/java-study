@@ -41,10 +41,10 @@ public class ServiceDiscovery {
         if (size > 0) {
             if (size == 1) {
                 data = dataList.get(0);
-                LOG.debug("using only data: {}", data);
+                LOG.info("using only data: {}", data);
             } else {
                 data = dataList.get(ThreadLocalRandom.current().nextInt(size));
-                LOG.debug("using random data: {}", data);
+                LOG.info("using random data: {}", data);
             }
         }
         return data;

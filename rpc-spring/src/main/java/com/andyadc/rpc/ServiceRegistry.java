@@ -62,12 +62,12 @@ public class ServiceRegistry {
             LOG.info("stat: {}", stat);
             if (stat != null) {
                 zk.delete(RpcConstant.ZK_REGISTRY_PATH, stat.getVersion());
-                LOG.debug("delete node: {}, version: {}", RpcConstant.ZK_REGISTRY_PATH, stat.getVersion());
+                LOG.info("delete node: {}, version: {}", RpcConstant.ZK_REGISTRY_PATH, stat.getVersion());
             }
 
             zk.create(RpcConstant.ZK_REGISTRY_PATH, "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             String path = zk.create(RpcConstant.ZK_DATA_PATH, data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-            LOG.debug("create zookeeper node ({} => {})", path, data);
+            LOG.info("create zookeeper node ({} => {})", path, data);
         } catch (KeeperException | InterruptedException e) {
             LOG.error("createNode error!", e);
         }
