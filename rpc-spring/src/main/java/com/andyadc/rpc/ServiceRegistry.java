@@ -6,6 +6,7 @@ import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,12 +58,18 @@ public class ServiceRegistry {
 
     private void createNode(ZooKeeper zk, String data) {
         try {
+            Stat stat = zk.exists(RpcConstant.ZK_REGISTRY_PATH, false);
+            LOG.info("stat: {}", stat);
+            if (stat != null) {
+                zk.delete(RpcConstant.ZK_REGISTRY_PATH, stat.getVersion());
+                LOG.debug("delete node: {}, version: {}", RpcConstant.ZK_REGISTRY_PATH, stat.getVersion());
+            }
+
             zk.create(RpcConstant.ZK_REGISTRY_PATH, "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             String path = zk.create(RpcConstant.ZK_DATA_PATH, data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
             LOG.debug("create zookeeper node ({} => {})", path, data);
         } catch (KeeperException | InterruptedException e) {
-            LOG.error("", e);
-            e.printStackTrace();
+            LOG.error("createNode error!", e);
         }
     }
 }
