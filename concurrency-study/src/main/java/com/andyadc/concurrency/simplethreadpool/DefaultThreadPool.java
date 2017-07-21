@@ -32,27 +32,56 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
     }
 
     public DefaultThreadPool(int num) {
-
+        workerNum = num > MAX_WORKER_NUMBERS ? MAX_WORKER_NUMBERS : num < MIN_WORKER_NUMBERS ? MIN_WORKER_NUMBERS : num;
+        initializeWokers(num);
     }
 
     @Override
     public void execute(Job job) {
-
+        if (job != null) {
+            synchronized (jobs) {
+                jobs.addLast(job);
+                jobs.notifyAll();
+            }
+        }
     }
 
     @Override
     public void shutdown() {
-
+        for (Worker worker : workers) {
+            worker.shutdown();
+        }
     }
 
     @Override
     public void addWorks(int num) {
-
+        synchronized (jobs) {
+            // 限制新增的Worker数量不能超过最大值
+            if (num + this.workerNum > MAX_WORKER_NUMBERS) {
+                num = MAX_WORKER_NUMBERS - this.workerNum;
+            }
+            initializeWokers(num);
+            this.workerNum += num;
+        }
     }
 
     @Override
     public void removeWorks(int num) {
-
+        synchronized (jobs) {
+            if (num > this.workerNum) {
+                throw new IllegalArgumentException("beyond workNum");
+            }
+            // 按照给定的数量停止Worker
+            int count = 0;
+            while (count < num) {
+                Worker worker = workers.get(count);
+                if (workers.remove(worker)) {
+                    worker.shutdown();
+                    count++;
+                }
+            }
+            this.workerNum -= count;
+        }
     }
 
     @Override
