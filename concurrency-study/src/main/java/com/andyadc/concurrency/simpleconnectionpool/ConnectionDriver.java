@@ -17,7 +17,7 @@ public class ConnectionDriver {
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             if ("commit".equals(method.getName())) {
-                TimeUnit.SECONDS.sleep(100);
+                TimeUnit.MILLISECONDS.sleep(100);
             }
             return null;
         }
