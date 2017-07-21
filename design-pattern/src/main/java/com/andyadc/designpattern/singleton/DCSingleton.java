@@ -15,7 +15,7 @@ package com.andyadc.designpattern.singleton;
  */
 public class DCSingleton {
 
-    private volatile static DCSingleton instance = null;
+    private static volatile DCSingleton instance = null;
 
     private DCSingleton() {
     }
