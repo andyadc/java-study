@@ -14,7 +14,7 @@
     <url>https://github.com/andyadc/java-study</url>
 
     <properties>
-        <spring.version>4.3.9.RELEASE</spring.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
     </properties>
 
     <dependencies>
