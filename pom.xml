@@ -29,6 +29,7 @@
         <module>rpc-spring-sample-client</module>
         <module>rpc-spring-sample-server</module>
         <module>rpc-spring-sample-api</module>
+        <module>jfinal</module>
     </modules>
 
     <developers>
