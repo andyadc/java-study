@@ -32,13 +32,13 @@ public class WaitNotify {
                 // 当条件不满足时，继续wait，同时释放了lock的锁
                 while (flag) {
                     try {
-                        System.out.println(Thread.currentThread() + " flag is true. wait @ " + new SimpleDateFormat("HH:mm:ss").format(new Date()));
+                        System.out.println(Thread.currentThread().getName() + " flag is true. wait @ " + new SimpleDateFormat("HH:mm:ss").format(new Date()));
                         lock.wait();
                     } catch (InterruptedException e) {
                     }
 
                     // 条件满足时，完成工作
-                    System.out.println(Thread.currentThread() + " flag is false. running @ " + new SimpleDateFormat("HH:mm:ss").format(new Date()));
+                    System.out.println(Thread.currentThread().getName() + " flag is false. running @ " + new SimpleDateFormat("HH:mm:ss").format(new Date()));
                 }
             }
         }
@@ -51,7 +51,7 @@ public class WaitNotify {
             synchronized (lock) {
                 // 获取lock的锁，然后进行通知，通知时不会释放lock的锁，
                 // 直到当前线程释放了lock后，WaitThread才能从wait方法中返回
-                System.out.println(Thread.currentThread() + " hold lock. notify @ " +
+                System.out.println(Thread.currentThread().getName() + " hold lock. notify @ " +
                         new SimpleDateFormat("HH:mm:ss").format(new Date()));
                 lock.notifyAll();
                 flag = false;
@@ -60,7 +60,7 @@ public class WaitNotify {
 
             // 再次加锁
             synchronized (lock) {
-                System.out.println(Thread.currentThread() + " hold lock again. sleep @ " + new SimpleDateFormat("HH:mm:ss").format(new Date()));
+                System.out.println(Thread.currentThread().getName() + " hold lock again. sleep @ " + new SimpleDateFormat("HH:mm:ss").format(new Date()));
                 SleepUtils.sleep(5);
             }
         }
