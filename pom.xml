@@ -30,6 +30,7 @@
         <module>rpc-spring-sample-server</module>
         <module>rpc-spring-sample-api</module>
         <module>jfinal</module>
+        <module>dubbo-study</module>
     </modules>
 
     <developers>
