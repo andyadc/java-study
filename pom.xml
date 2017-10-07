@@ -31,6 +31,7 @@
         <module>rpc-spring-sample-api</module>
         <module>jfinal</module>
         <module>dubbo-study</module>
+        <module>thrift-parent</module>
     </modules>
 
     <developers>
