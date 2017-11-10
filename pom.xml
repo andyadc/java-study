@@ -32,6 +32,7 @@
         <module>jfinal</module>
         <module>dubbo-study</module>
         <module>thrift-parent</module>
+        <module>spi-study</module>
     </modules>
 
     <developers>
