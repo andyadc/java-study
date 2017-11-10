@@ -17,7 +17,15 @@ public class TestWithoutThreadPool {
 
         for (int i = 0; i < 20000; i++) {
 
-            Thread thread = new Thread(() -> list.add(random.nextInt()));
+            // lambda
+            //Thread thread = new Thread(() -> list.add(random.nextInt()));
+
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    list.add(random.nextInt());
+                }
+            });
 
             thread.start();
             try {

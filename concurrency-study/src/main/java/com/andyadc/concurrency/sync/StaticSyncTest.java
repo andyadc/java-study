@@ -3,7 +3,7 @@ package com.andyadc.concurrency.sync;
 /**
  * 如果一个线程执行一个对象的非static synchronized方法，另外一个线程需要执行这个对象所属类的static synchronized方法，此时不会发生互斥现象，
  * 因为访问static synchronized方法占用的是类锁，而访问非static synchronized方法占用的是对象锁，所以不存在互斥现象。
- * <p>
+ * <p/>
  * 对于synchronized方法或者synchronized代码块，当出现异常时，JVM会自动释放当前线程占用的锁，因此不会由于异常导致出现死锁现象。
  *
  * @author andaicheng
@@ -12,13 +12,30 @@ package com.andyadc.concurrency.sync;
 public class StaticSyncTest {
 
     public static void main(String[] args) throws InterruptedException {
-        StaticSync sync = new StaticSync();
-        Thread thread1 = new Thread(() -> {
-            sync.staticSyncM1();
+        final StaticSync sync = new StaticSync();
+
+        // lambda
+//        Thread thread1 = new Thread(() -> {
+//            sync.staticSyncM1();
+//        });
+
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                StaticSync.staticSyncM1();
+            }
         });
 
-        Thread thread2 = new Thread(() -> {
-            sync.syncM2();
+// lambda
+//        Thread thread2 = new Thread(() -> {
+//            sync.syncM2();
+//        });
+
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sync.syncM2();
+            }
         });
 
         thread1.start();
@@ -29,24 +46,6 @@ public class StaticSyncTest {
 }
 
 class StaticSync {
-
-    public synchronized void syncM1() {
-        System.out.println("syncM1");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public synchronized void syncM2() {
-        System.out.println("syncM2");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static synchronized void staticSyncM1() {
         System.out.println("staticSyncM1");
@@ -59,6 +58,24 @@ class StaticSync {
 
     public static synchronized void staticSyncM2() {
         System.out.println("staticSyncM2");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void syncM1() {
+        System.out.println("syncM1");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void syncM2() {
+        System.out.println("syncM2");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

@@ -1,7 +1,6 @@
 package com.andyadc.concurrency.simplethreadpool;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -26,7 +25,8 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
     // 这是一个工作列表，将会向里面插入工作
     private final LinkedList<Job> jobs = new LinkedList<>();
     // 工作者列表
-    private final List<Worker> workers = Collections.synchronizedList(new ArrayList<>());
+    //private final List<Worker> workers = Collections.synchronizedList(new ArrayList<>());
+    private final List<Worker> workers = new ArrayList<>();
     // 工作者线程的数量
     private int workerNum = DEFAULT_WORKER_NUMBERS;
     // 线程编号生成

@@ -16,10 +16,16 @@ public class TestWithThreadPool {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         final List<Integer> list = new LinkedList<>();
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(100, 100, 60, TimeUnit.SECONDS, new LinkedBlockingQueue<>(20000));
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(100, 100, 60, TimeUnit.SECONDS, new LinkedBlockingQueue(20000));
         final Random random = new Random();
         for (int i = 0; i < 20000; i++) {
-            executor.execute(() -> list.add(random.nextInt()));
+            //executor.execute(() -> list.add(random.nextInt()));
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    list.add(random.nextInt());
+                }
+            });
         }
 
         executor.shutdown();
