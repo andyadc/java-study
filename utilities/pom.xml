@@ -14,14 +14,14 @@
     <url>https://github.com/andyadc/java-study</url>
 
     <properties>
-        <fastjson.version>1.2.39</fastjson.version>
+        <fastjson.version>1.2.40</fastjson.version>
         <jodd.version>3.9.1</jodd.version>
         <joda-time.version>2.9.9</joda-time.version>
-        <guava.version>22.0</guava.version>
+        <guava.version>23.0</guava.version>
         <orika.version>1.5.2</orika.version>
         <dozer.version>5.5.1</dozer.version>
         <commons-codec.version>1.10</commons-codec.version>
-        <commons-lang3.version>3.6</commons-lang3.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
         <commons-text.version>1.1</commons-text.version>
         <javatuples.version>1.2</javatuples.version>
     </properties>
