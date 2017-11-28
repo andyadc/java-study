@@ -3,6 +3,22 @@ package com.andyadc.study.java8.lambda;
 import java.util.Comparator;
 import java.util.function.Consumer;
 
+interface Interface1 {
+    void handle(String param);
+}
+
+interface Interface2 {
+    boolean handle(String param);
+}
+
+interface Interface3 {
+    String handle(int num, String param);
+}
+
+interface Interface4 {
+    int handle();
+}
+
 /**
  * Lambda 表达式的基础语法: Java8中引入的一个新的操作符 "->" 该操作符称为箭头操作符或Lambda操作符
  * 箭头操作符将Lambda表达式拆分成两部分
@@ -31,7 +47,45 @@ public class LambdaStudy {
 
     public static void main(String[] args) {
         //one();
-        two();
+        //two();
+//        five();
+//        six();
+        //seven();
+        eight();
+    }
+
+    private static void eight() {
+        Interface4 interface4 = () -> test();
+        System.out.println(interface4.handle());
+    }
+
+    static int test() {
+        return 1;
+    }
+
+    private static void seven() {
+        Interface3 interface3 = (num, param) -> {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < num; i++) {
+                builder.append(param + "\n");
+            }
+            return builder.toString();
+        };
+
+        System.out.println(interface3.handle(5, "Hello"));
+    }
+
+    private static void six() {
+        Interface2 interface2 = (param) -> param != null;
+
+        boolean result = interface2.handle("sdassa");
+        System.out.println(result);
+    }
+
+    private static void five() {
+        Interface1 interface1 = (param) -> System.out.println(param);
+
+        interface1.handle("Hello");
     }
 
     private static void four() {
@@ -65,3 +119,4 @@ public class LambdaStudy {
         runnable1.run();
     }
 }
+
