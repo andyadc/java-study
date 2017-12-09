@@ -14,7 +14,7 @@
     <url>https://github.com/andyadc/java-study</url>
 
     <properties>
-        <fastjson.version>1.2.40</fastjson.version>
+        <fastjson.version>1.2.41</fastjson.version>
         <jodd.version>3.9.1</jodd.version>
         <joda-time.version>2.9.9</joda-time.version>
         <guava.version>23.0</guava.version>
@@ -162,7 +162,7 @@
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
-            <version>3.2.0</version>
+            <version>3.3.0</version>
         </dependency>
 
         <dependency>
