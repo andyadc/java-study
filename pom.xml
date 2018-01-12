@@ -33,6 +33,7 @@
         <module>dubbo-study</module>
         <module>thrift-parent</module>
         <module>spi-study</module>
+        <module>kafka</module>
     </modules>
 
     <developers>
