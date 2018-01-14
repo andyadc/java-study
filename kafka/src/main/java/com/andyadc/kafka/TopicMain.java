@@ -7,17 +7,36 @@ import org.apache.kafka.common.security.JaasUtils;
 
 import java.util.Properties;
 
-import static com.andyadc.kafka.KafkaCommon.*;
+import static com.andyadc.kafka.Const.*;
 
 /**
  * @author andy.an
  * @since 2018/1/12
  */
-public class KafkaTopic {
+public class TopicMain {
+
+    private static final String TOPIC_TEST = "test";
 
     public static void main(String[] args) {
         Properties properties = new Properties();
-        createTopic("test", 1, 1, properties);
+//        createTopic(TOPIC_TEST, 1, 1, properties);
+
+//        deleteToic(TOPIC_TEST);
+    }
+
+    public static void deleteToic(String topic) {
+        ZkUtils zkUtils = null;
+        try {
+            zkUtils = ZkUtils.apply(ZK_CONNECT, SESSION_TIMEOUT, CONNECT_TIMEOUT,
+                    JaasUtils.isZkSecurityEnabled());
+            AdminUtils.deleteTopic(zkUtils, topic);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (zkUtils != null) {
+                zkUtils.close();
+            }
+        }
     }
 
     /**

@@ -4,7 +4,7 @@ package com.andyadc.kafka;
  * @author andy.an
  * @since 2018/1/12
  */
-public class KafkaCommon {
+public class Const {
 
     /**
      * 连接 Zk
