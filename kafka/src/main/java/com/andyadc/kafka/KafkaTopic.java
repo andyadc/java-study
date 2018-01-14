@@ -1,6 +1,7 @@
 package com.andyadc.kafka;
 
 import kafka.admin.AdminUtils;
+import kafka.server.ConfigType;
 import kafka.utils.ZkUtils;
 import org.apache.kafka.common.security.JaasUtils;
 
@@ -15,9 +16,42 @@ import static com.andyadc.kafka.KafkaCommon.*;
 public class KafkaTopic {
 
     public static void main(String[] args) {
-        createTopic("test", 1, 1, null);
+        Properties properties = new Properties();
+        createTopic("test", 1, 1, properties);
     }
 
+    /**
+     * 修改主题级别配置
+     *
+     * @param topic
+     * @param properties
+     */
+    public static void modifyTopicConfig(String topic, Properties properties) {
+        ZkUtils zkUtils = null;
+        try {
+            zkUtils = ZkUtils.apply(ZK_CONNECT, SESSION_TIMEOUT, CONNECT_TIMEOUT,
+                    JaasUtils.isZkSecurityEnabled());
+            // 首先获取当前已有的配置，这里是查询主题级别的配置，因此指定配置类型为 Topic
+            Properties curProp = AdminUtils.fetchEntityConfig(zkUtils, ConfigType.Topic(), topic);
+            curProp.putAll(properties);// 添加新修改的配置
+            AdminUtils.changeTopicConfig(zkUtils, topic, curProp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (zkUtils != null) {
+                zkUtils.close();
+            }
+        }
+    }
+
+    /**
+     * 创建主题
+     *
+     * @param topic
+     * @param partition
+     * @param replication
+     * @param properties
+     */
     public static void createTopic(String topic, int partition, int replication, Properties properties) {
         ZkUtils zkUtils = null;
         try {
