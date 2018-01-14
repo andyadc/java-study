@@ -19,9 +19,9 @@ public class TopicMain {
 
     public static void main(String[] args) {
         Properties properties = new Properties();
-//        createTopic(TOPIC_TEST, 1, 1, properties);
+        createTopic(TOPIC_TEST, 1, 1, properties);
 
-        deleteToic(TOPIC_TEST);
+//        deleteToic(TOPIC_TEST);
     }
 
     public static void deleteToic(String topic) {
