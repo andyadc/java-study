@@ -11,6 +11,10 @@ public class Const {
      */
     protected static final String ZK_CONNECT = "www.jd-server.com:2181";
     /**
+     * 连接 Kafka
+     */
+    protected static final String BROKER_SERVER = "www.jd-server.com:9092";
+    /**
      * session 过期时间
      */
     protected static final int SESSION_TIMEOUT = 30000;
