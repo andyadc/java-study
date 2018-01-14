@@ -9,7 +9,7 @@ public class KafkaCommon {
     /**
      * 连接 Zk
      */
-    protected static final String ZK_CONNECT = "http://www.jd-server.com:2181";
+    protected static final String ZK_CONNECT = "www.jd-server.com:2181";
     /**
      * session 过期时间
      */
