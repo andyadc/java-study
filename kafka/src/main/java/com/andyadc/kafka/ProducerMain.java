@@ -4,11 +4,15 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Properties;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import static com.andyadc.kafka.Const.BROKER_SERVER;
@@ -19,31 +23,106 @@ import static com.andyadc.kafka.Const.BROKER_SERVER;
  */
 public class ProducerMain {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ProducerMain.class);
+
     /**
      * 设置实例生产消息的总数
      */
-    private static final int MSG_SIZE = 100;
+    private static final int MSG_SIZE = 10;
+
     /**
      * 主题名称
      */
     private static final String TOPIC_STOCK = "test";
+
+    private static final int THREAD_NUMS = 3;
 
     private static KafkaProducer<String, String> producer = null;
 
     static {
         // 1.构造用于实例化 KafkaProducer 的 Properties 信息
         Properties properties = initConfig();
-        // 2.初始化一个 KafkaProducer
+        // 2.初始化一个 KafkaProducer (线程安全)
         producer = new KafkaProducer<>(properties);
     }
 
     public static void main(String[] args) {
+//        simpleSend();
+//        sendCallback();
+        sendMultiThread();
+    }
+
+    private static void sendMultiThread() {
+        ProducerRecord<String, String> record = null;
+        StockQuotationInfo info = null;
+
+        ExecutorService executor = Executors.newFixedThreadPool(THREAD_NUMS);
+        long current = System.currentTimeMillis();
+
+        try {
+            for (int i = 0; i < MSG_SIZE; i++) {
+                info = createQuotationInfo();
+                record = new ProducerRecord<>(TOPIC_STOCK, null,
+                        info.getTradeTime(),
+                        info.getStockCode(),
+                        info.toString());
+
+                executor.submit(new KafkaProducerThread(producer, record));
+            }
+
+        } catch (Exception e) {
+            LOG.error("Send message occurs exception", e);
+        } finally {
+            producer.close();
+            executor.shutdown();
+        }
+
+        LOG.info("Send message elapsed {}ms", (System.currentTimeMillis() - current));
+    }
+
+    private static void sendCallback() {
         ProducerRecord<String, String> record = null;
         StockQuotationInfo info = null;
         try {
             int num = 0;
             for (int i = 0; i < MSG_SIZE; i++) {
                 info = new StockQuotationInfo();
+                record = new ProducerRecord<>(TOPIC_STOCK, null,
+                        info.getTradeTime(),
+                        info.getStockCode(),
+                        info.toString());
+
+                producer.send(record, (metadata, exception) -> {
+
+                    if (null != exception) {
+                        LOG.error("Send message occurs exception.", exception);
+                    }
+                    if (null != metadata) {
+                        LOG.info(String.format("offset:%s, partition:%s", metadata.offset(), metadata.partition()));
+                    }
+
+                }); // 异步发送消息
+
+                if (num++ % 10 == 0) {
+                    TimeUnit.SECONDS.sleep(2);
+                }
+            }
+
+            TimeUnit.SECONDS.sleep(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            producer.close();
+        }
+    }
+
+    private static void simpleSend() {
+        ProducerRecord<String, String> record = null;
+        StockQuotationInfo info = null;
+        try {
+            int num = 0;
+            for (int i = 0; i < MSG_SIZE; i++) {
+                info = createQuotationInfo();
                 record = new ProducerRecord<>(TOPIC_STOCK, null, info.getTradeTime(), info.getStockCode(), info.toString());
                 producer.send(record); // 异步发送消息
                 if (num++ % 10 == 0) {
@@ -96,6 +175,32 @@ public class ProducerMain {
         quotationInfo.setStockName("股票-" + stockCode);
         return quotationInfo;
     }
+}
+
+class KafkaProducerThread implements Runnable {
+
+    private static final Logger LOG = LoggerFactory.getLogger(KafkaProducerThread.class);
+
+    private KafkaProducer<String, String> producer = null;
+    private ProducerRecord<String, String> record = null;
+
+    public KafkaProducerThread(KafkaProducer<String, String> producer, ProducerRecord<String, String> record) {
+        this.producer = producer;
+        this.record = record;
+    }
+
+    @Override
+    public void run() {
+        producer.send(record, (metadata, exception) -> {
+            if (exception != null) {// 发送异常记录异常信息
+                LOG.error("Send message occurs exception.", exception);
+            }
+            if (null != metadata) {
+                LOG.info(String.format("offset:%s, partition:%s", metadata.offset(), metadata.partition()));
+            }
+        });
+    }
+
 }
 
 class StockQuotationInfo implements Serializable {
