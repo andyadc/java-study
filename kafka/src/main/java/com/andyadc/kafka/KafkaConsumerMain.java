@@ -8,6 +8,7 @@ import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -23,7 +24,23 @@ public class KafkaConsumerMain {
     public static void main(String[] args) {
 //        consumeAutoCommit();
 //        consumeHandCommit();
-        consumeTimestamp();
+//        consumeTimestamp();
+        consumeMultiThread();
+    }
+
+    /**
+     * 多个消费者线程消费同一个主题
+     */
+    private static void consumeMultiThread() {
+        Properties props = basicConfig();
+        props.put("enable.auto.commit", true);// 显示设置偏移量自动提交
+        props.put("auto.commit.interval.ms", 1000);// 设置偏移量提交时间间隔
+
+        // 多个线程会出异常
+        // <href>http://www.cnblogs.com/gaoxiang116/p/7121114.html</href>
+        for (int i = 0; i < 1; i++) {
+            new KafkaConsumerThread(props, "test").start();
+        }
     }
 
     /**
@@ -163,4 +180,39 @@ public class KafkaConsumerMain {
         return props;
     }
 
+}
+
+/**
+ * 消费者线程
+ */
+class KafkaConsumerThread extends Thread {
+    // 每个线程拥有私有的 KafkaConsumer 实例
+    private KafkaConsumer<String, String> consumer;
+
+    public KafkaConsumerThread(Properties props, String topic) {
+        this.consumer = new KafkaConsumer<>(props);
+        consumer.subscribe(Collections.singletonList(topic));
+    }
+
+    @Override
+    public void run() {
+
+        try {
+            while (true) {
+                ConsumerRecords<String, String> records = consumer.poll(10000);
+                for (ConsumerRecord<String, String> record : records) {
+                    System.out.printf("partition= %d, offset= %d,key= %s value= %s%n",
+                            record.partition(),
+                            record.offset(),
+                            record.key(),
+                            record.value());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            consumer.close();
+        }
+
+    }
 }
