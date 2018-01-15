@@ -47,9 +47,9 @@ public class ProducerMain {
     }
 
     public static void main(String[] args) {
-//        simpleSend();
+        simpleSend();
 //        sendCallback();
-        sendMultiThread();
+//        sendMultiThread();
     }
 
     private static void sendMultiThread() {
