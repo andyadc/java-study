@@ -13,8 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import static com.andyadc.kafka.Const.BROKER_SERVER;
-
 /**
  * @author andy.an
  * @since 2018/1/15
@@ -174,7 +172,7 @@ public class KafkaConsumerMain {
         Properties props = new Properties();
         props.put("group.id", "test");
         props.put("client.id", "test");
-        props.put("bootstrap.servers", BROKER_SERVER);
+        props.put("bootstrap.servers", Const.BROKER_SERVER);
         props.put("key.deserializer", StringDeserializer.class.getName());
         props.put("value.deserializer", StringDeserializer.class.getName());
         return props;
