@@ -23,7 +23,7 @@ public class KafkaConsumerMain {
 //        consumeAutoCommit();
 //        consumeHandCommit();
 //        consumeTimestamp();
-        consumeMultiThread();
+//        consumeMultiThread();
     }
 
     /**
