@@ -15,21 +15,16 @@
         <module>concurrency-study</module>
         <module>jdbc-study</module>
         <module>utilities</module>
-        <module>dependency-injection-study</module>
         <module>proxy-study</module>
         <module>design-pattern</module>
-        <module>spring-study</module>
         <module>data-structure-and-algorithm</module>
         <module>jvm-study</module>
         <module>java-basic</module>
-        <module>distributed-system</module>
         <module>mybatis-study</module>
-        <module>mq-study</module>
         <module>rpc-spring</module>
         <module>rpc-spring-sample-client</module>
         <module>rpc-spring-sample-server</module>
         <module>rpc-spring-sample-api</module>
-        <module>jfinal</module>
         <module>dubbo-study</module>
         <module>thrift-parent</module>
         <module>spi-study</module>
